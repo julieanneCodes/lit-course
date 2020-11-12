@@ -1,6 +1,5 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import '../vacationHistoryEmp/vacation-history.js';
-import { vacationDates } from '../utils/vacation-dates';
 const component = html`<vacation-history></vacation-history>`;
 const interval = {
   detail: [0, 4],
@@ -15,7 +14,6 @@ describe('Default vacation history properties and render', async () => {
   });
 
   it('Default properties', async () => {
-    expect(el.vacationDates).to.eql(vacationDates);
     expect(el.from).equal(0);
     expect(el.nDates).equal(6);
     expect(el.to).equal(6);

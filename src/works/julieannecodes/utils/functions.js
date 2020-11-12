@@ -23,7 +23,7 @@ export const orderItems = (arr, order) => {
 };
 
 export const vacationDays = (interval) => {
-  const nDays = (interval.endDate - interval.startDate) / (3600 * 24 * 1000);
+  const nDays = (new Date(interval.endDate) - new Date(interval.startDate)) / (3600 * 24 * 1000);
   const isWeekend = (date) => date.getDay() === 6 || date.getDay() === 0;
   let count = 0;
   for (let i = 0; i <= nDays; i++) {

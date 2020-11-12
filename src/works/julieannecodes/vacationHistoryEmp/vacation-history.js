@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit-element';
-import { vacationDates } from '../utils/vacation-dates';
 import { dateFormatter, vacationDays } from '../utils/functions';
+import { getDateList } from '../utils/api/api-request';
 import { historyStyles } from '../utils/history-styles';
 import '../components/stepper';
 class VacationHistory extends LitElement {
@@ -20,10 +20,24 @@ class VacationHistory extends LitElement {
 
   constructor() {
     super();
-    this.vacationDates = [...vacationDates];
+    this.vacationDates = [];
     this.from = 0;
     this.nDates = 6;
     this.to = this.nDates;
+  }
+
+  async firstUpdated() {
+    await this.getDates();
+  }
+
+  async getDates() {
+    const request = await getDateList();
+    if (!request.error) {
+      this.vacationDates = [...request.data];
+    } else if (request.errorCode === 500) {
+      // eslint-disable-next-line no-alert
+      alert(request.error);
+    }
   }
 
   getValues(e) {
