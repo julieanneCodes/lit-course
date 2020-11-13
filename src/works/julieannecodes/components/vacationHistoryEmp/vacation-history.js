@@ -1,8 +1,7 @@
 import { LitElement, html } from 'lit-element';
-import { dateFormatter, vacationDays } from '../utils/functions';
-import { getDateList } from '../utils/api/api-request';
-import { historyStyles } from '../utils/history-styles';
-import '../components/stepper';
+import { dateFormatter, vacationDays } from '../../utils/functions';
+import { historyStyles } from '../../utils/history-styles';
+import '../stepper';
 class VacationHistory extends LitElement {
   static get styles() {
     return [historyStyles];
@@ -24,20 +23,6 @@ class VacationHistory extends LitElement {
     this.from = 0;
     this.nDates = 6;
     this.to = this.nDates;
-  }
-
-  async firstUpdated() {
-    await this.getDates();
-  }
-
-  async getDates() {
-    const request = await getDateList();
-    if (!request.error) {
-      this.vacationDates = [...request.data];
-    } else if (request.errorCode === 500) {
-      // eslint-disable-next-line no-alert
-      alert(request.error);
-    }
   }
 
   getValues(e) {

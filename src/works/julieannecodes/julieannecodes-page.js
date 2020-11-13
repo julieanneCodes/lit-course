@@ -2,12 +2,12 @@ import { LitElement, html, css } from 'lit-element';
 import { commonStyles } from '../../utils/custom-styles';
 import '../../components/common-header';
 import '../../components/work-header';
-import './vacationHistoryEmp/vacation-history';
+import './views/history-view';
 import './VacationRequests/vacation-table';
 
 const components = {
   vacationTable: () => html`<vacation-table></vacation-table>`,
-  vacationHistory: () => html`<vacation-history></vacation-history>`,
+  vacationHistory: () => html`<history-view></history-view>`,
 };
 class JulieannecodesPage extends LitElement {
   static get styles() {

@@ -1,5 +1,5 @@
-/* import { expect, fixture, html } from '@open-wc/testing';
-import '../vacationHistoryEmp/vacation-history.js';
+import { expect, fixture, html } from '@open-wc/testing';
+import '../components/vacationHistoryEmp/vacation-history';
 const component = html`<vacation-history></vacation-history>`;
 const interval = {
   detail: [0, 4],
@@ -54,4 +54,4 @@ describe('Vacation history stepper', async () => {
     expect(el.from).equal(0);
     expect(el.to).equal(4);
   });
-}); */
+});
